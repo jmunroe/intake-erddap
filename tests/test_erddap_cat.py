@@ -31,8 +31,8 @@ def test_yaml_cat():
     assert False
 
     table, table_nopk, uri = temp_db
-    os.environ['TEST_SQLITE_URI'] = uri  # used in catalog default
-    cat = intake.Catalog(os.path.join(here, 'cat.yaml'))
+    cat = intake.Catalog(os.path.join(here, 'cat.yaml')
+    
     assert 'tables' in cat
     cat2 = cat.tables()
     assert isinstance(cat2, SQLCatalog)

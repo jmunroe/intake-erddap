@@ -38,7 +38,8 @@ class ERDDAPCatalog(Catalog):
                 continue
 
             description = 'ERDDAP dataset_id %s from %s' % (dataset_id, self.server)
-            args = {'server': self.server, 
+            args = {'server': self.server,
+                    'dataset_id': dataset_id,
                     'protocol': 'tabledap', 
                     }
 
