@@ -1,0 +1,39 @@
+package:
+   name: intake-erddap
+   version: {{ GIT_DESCRIBE_TAG }}
+
+source:
+   path: ..
+
+build:
+  number: {{ GIT_DESCRIBE_NUMBER|int }}
+  noarch: python
+  script: python setup.py install --single-version-externally-managed --record=record.txt
+
+requirements:
+  build:
+    - python
+    - jinja2
+  run:
+    - python
+    - intake
+    - erddapy
+    - pandas
+
+test:
+  source_files:
+    - tests
+  requires:
+    - coverage
+    - erddapy
+    - pytest
+    - pytest-cov
+  commands:
+    - py.test --verbose --cov=intake_erddap tests
+
+about:
+  home: https://github.com/ContinuumIO/intake-erddap
+  license: BSD
+  license_file: LICENSE
+  summary: |
+    ERDDAP plugin for Intake
